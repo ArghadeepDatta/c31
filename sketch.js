@@ -8,6 +8,55 @@ var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
 
+var gameState = "onSling";
+
+//arrays are a data structure / variables in which you can store multiple data of different forms
+
+var a = "Arghadeep";
+
+var b = 23;
+//boolean values - 0 /1 
+var c = true;
+
+//null - empty 
+var d = null;
+
+var abc;
+//undefined 
+console.log(abc);
+
+
+//arrays 
+var arr1 = [23, "Shweta", true, 450];
+console.log(arr1);
+console.log(arr1[1]);
+
+
+//inside an array - muliple arrays - multi dimensional arrays 
+// [[],[]]
+
+var arr2 = [["ABC",24],[1,2,3,4],["Hi","Bye"]];
+console.log(arr2);
+
+console.log(arr2[0][1]);
+
+
+//4
+console.log(arr2[1][3]);
+
+//Bye
+console.log(arr2[2][1]);
+
+
+//ABC
+console.log(arr2[0][0]);
+
+arr1.push("BYE BYE!!");
+console.log(arr1);
+
+//last in last out 
+arr1.pop();
+console.log(arr1);
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,16 +118,19 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState != "launched"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "launched";
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+        //slingshot.attach(bird.body);
     }
 }
